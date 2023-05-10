@@ -1,0 +1,4 @@
+{
+  "watch": ["./"],
+  "ignore": ["./src/persistence/data/teams.json"]
+}
