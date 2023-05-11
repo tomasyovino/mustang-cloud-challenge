@@ -28,6 +28,7 @@ export const startScrapping = async () => {
             height: 1080,
         });
         await page.goto(config.url_to_parse, pageOptions);
+        await page.waitForSelector('img.lazyloaded[src]:not([src=""])');
         const tbodys = await page.$$('tbody');
         const firstTbody = tbodys[0];
         const tbodyChildren = await firstTbody.$$('tr');
@@ -39,8 +40,7 @@ export const startScrapping = async () => {
             const firstTdContent = await tds[0].getProperty('textContent');
             const position = await firstTdContent.jsonValue();
             const imgElement = await tds[1].$('img');
-            const srcProperty = await imgElement.getProperty('src');
-            const imgUrl = await srcProperty.jsonValue();
+            const imgUrl = await imgElement.evaluate((img) => img.getAttribute('data-src'));
             const name = await tds[1].$eval('a span.d-md-inline', el => el.textContent.trim());
             const playedMatchesTdId = await tds[2].getProperty('textContent');
             const playedMatches = await playedMatchesTdId.jsonValue();
