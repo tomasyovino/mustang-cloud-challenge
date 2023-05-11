@@ -1,3 +1,45 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 0.625rem 1.25rem;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+	padding: 0.625rem 1.25rem;
+}
+
 .container {
 	max-width: 100%;
 	overflow-x: auto;
@@ -40,6 +82,10 @@ img {
 }
 
 @media screen and (max-width: 600px) {
+	main {
+		padding: 0.625rem;
+	}
+
 	td div {
 		justify-content: center;
 	}
